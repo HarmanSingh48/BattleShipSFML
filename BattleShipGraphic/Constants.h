@@ -44,6 +44,8 @@
 #define BOARD_OUTLINE_THICKNESS 5
 #define BOARD_GRIDLINES_THICKNESS 2
 
+#define GRID_SIZE BOARD_WIDTH / (NUMBER_OF_RENDERED_GRID_LINES + 1)
+
 //Used for tracking whose turn it currently is
 enum class Player {
 	Player_1 = 1,
