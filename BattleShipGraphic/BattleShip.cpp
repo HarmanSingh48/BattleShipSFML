@@ -85,7 +85,7 @@ Ship* BattleShip::getShipAtIndex(const Player player, const int index)
 bool BattleShip::VerifyAndPlaceShipOnBoard(const Player player, Ship& shipToPlace)
 {
 	if (shipToPlace.getOrientation() == Cardinal::North || shipToPlace.getOrientation() == Cardinal::South) {
-		shipToPlace.getPos().
+		//shipToPlace.getPos().
 	}
 	else {
 
