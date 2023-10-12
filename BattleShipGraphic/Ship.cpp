@@ -1,6 +1,6 @@
 #include "Ship.h"
 
-Ship::Ship(char theType, Cardinal theOrientation, int theHealthPool)
+Ship::Ship(char theType, Orientation theOrientation, int theHealthPool)
 {
 	this->type = theType;
 	orientation = theOrientation;
@@ -26,12 +26,12 @@ void Ship::setPos(const sf::Vector2i thePos)
 	this->bowPos = thePos;
 }
 
-Cardinal Ship::getOrientation()
+Orientation Ship::getOrientation()
 {
 	return this->orientation;
 }
 
-void Ship::setOrientation(const Cardinal theOrientation)
+void Ship::setOrientation(const Orientation theOrientation)
 {
 	this->orientation = theOrientation;
 }

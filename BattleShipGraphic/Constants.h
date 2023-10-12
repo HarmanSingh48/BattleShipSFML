@@ -53,9 +53,9 @@ enum class Player {
 };
 
 //Used for tracking which direction the ships are facing
-enum class Cardinal
+enum class Orientation
 {
-	North, South, East, West
+	Vertical, Horizontal
 };
 
 //Used for tracking which screen is to be rendered: the Main Menu, the Instructions, or the game

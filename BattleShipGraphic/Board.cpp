@@ -42,16 +42,56 @@ void Tile::setLowerBound(const sf::Vector2i& LowerBoundOfPixels)
 	this->pxBoundUpper.y = LowerBoundOfPixels.y;
 }
 
+Ship const* Tile::getCurrPiece()
+{
+	return this->currentPiece;
+}
+
+sf::Vector2i& Tile::getUpperBound()
+{
+	return this->pxBoundUpper;
+}
+
+sf::Vector2i& Tile::getLowerBound()
+{
+	return this->pxBoundUpper;
+}
+
+
+
 Board::Board(const int GridSize)
 {
-	for (int i = 0; i < BOARD_WIDTH; i++) {//Arr[i][j]
-		for (int j = 0; j < BOARD_HEIGHT; j++) {
+	for (int i = 0; i < MAX_ROWS; i++) {//Arr[i][j]
+		for (int j = 0; j < MAX_COLS; j++) {
 			gameBoard[i][j].setUpperBound(sf::Vector2i((j + 1) * GRID_SIZE, (i + 1) * GRID_SIZE));
 			gameBoard[i][j].setLowerBound(sf::Vector2i((j * GRID_SIZE) + 1, (i * GRID_SIZE) + 1));
 		}
 	}
+
 }
 
 Board::~Board()
 {
+}
+
+
+
+bool Board::placeShipOnBoard(Ship& shipToPlace, sf::Vector2i shipHeadPosition)
+{
+	//if the specified tile is already occupies
+	if (gameBoard[shipHeadPosition.y][shipHeadPosition.x].getCurrPiece() != nullptr) return false;
+	
+	if (shipToPlace.getOrientation() == Orientation::Vertical) {
+		for (int i = 0; i < shipToPlace.getHealth(); i++) {
+			gameBoard[shipHeadPosition.y + i][shipHeadPosition.x].setCurrPiece(shipToPlace);
+		}
+	}
+	else {
+		for (int i = 0; i < shipToPlace.getHealth(); i++) {
+			gameBoard[shipHeadPosition.y][shipHeadPosition.x + i].setCurrPiece(shipToPlace);
+		}
+	}
+
+
+	return false;
 }
