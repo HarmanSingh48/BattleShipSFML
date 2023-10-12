@@ -4,10 +4,10 @@
 class Ship {
 	char type;
 	sf::Vector2i bowPos;
-	Cardinal orientation;
+	Orientation orientation;
 	int health;
 public:
-	Ship(char theType = '~', Cardinal theOrientation = Cardinal::North, int theHealthPool = 0);
+	Ship(char theType = '~', Orientation theOrientation = Orientation::Vertical, int theHealthPool = 0);
 	~Ship();
 
 	//Getters/Setters
@@ -17,9 +17,9 @@ public:
 
 	void setPos(const sf::Vector2i thePos);
 
-	Cardinal getOrientation();
+	Orientation getOrientation();
 
-	void setOrientation(const Cardinal theOrientation);
+	void setOrientation(const Orientation theOrientation);
 
 	int getHealth();
 
