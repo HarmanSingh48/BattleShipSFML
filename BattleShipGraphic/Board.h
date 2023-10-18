@@ -39,4 +39,5 @@ public:
 	~Board();
 
 	bool placeShipOnBoard(Ship& shipToPlace, sf::Vector2i shipHeadPosition);
+
 };

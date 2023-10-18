@@ -4,12 +4,12 @@
 class BattleShip
 {
 		//Player 1
-	char P1_Board[MAX_ROWS][MAX_COLS];
+	Board* P1Board;
 	PlayerStats P1_Stats;
 	Ship P1_Ships[NUMBER_OF_SHIPS_PER_PLAYER];
 
 		//Player 2
-	char P2_Board[MAX_ROWS][MAX_COLS];
+	Board* P2Board;
 	PlayerStats P2_Stats;
 	Ship P2_Ships[NUMBER_OF_SHIPS_PER_PLAYER];
 
@@ -18,7 +18,6 @@ class BattleShip
 
 
 
-	void initGameBoardArray(char game_board[][MAX_COLS]);
 	void initShips(Ship theShipArr[]);
 
 

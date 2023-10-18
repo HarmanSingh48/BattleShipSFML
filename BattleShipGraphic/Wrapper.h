@@ -38,9 +38,6 @@ private:
 	sf::Text P1ScoreText;
 	sf::Text P2ScoreText;
 
-	sf::Texture shipTextures[NUMBER_OF_SHIPS_PER_PLAYER];
-	sf::Sprite shipSprites[NUMBER_OF_SHIPS_PER_PLAYER];
-
 	//X grid lines are * 2 because they need to be repeated for the second board
 	sf::RectangleShape boardGridLinesX[NUMBER_OF_RENDERED_GRID_LINES];
 	sf::RectangleShape boardGridLinesY[NUMBER_OF_RENDERED_GRID_LINES * 2];

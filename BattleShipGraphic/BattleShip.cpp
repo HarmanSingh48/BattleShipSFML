@@ -1,44 +1,34 @@
 #include "BattleShip.h"
 
-void BattleShip::initGameBoardArray(char game_board[][MAX_COLS])
-{
-	int row_index = 0, col_index = 0;
-	for (; row_index < MAX_ROWS; row_index++) {
-		for (col_index = 0; col_index < MAX_COLS; col_index++) {
-			game_board[row_index][col_index] = '~';
-		}
-	}
-}
-
-
 
 void BattleShip::initShips(Ship theShipArr[])
 {
 	//Initialize each ship type for both players
-	theShipArr[CARR_INDEX] = Ship(CARRIER, Cardinal::North, CARRIER_LEN);
-	theShipArr[BATT_INDEX] = Ship(BATTLE, Cardinal::North, BATTLE_LEN);
-	theShipArr[CRUS_INDEX] = Ship(CRUISER, Cardinal::North, CRUISER_LEN);
-	theShipArr[SUB_INDEX] = Ship(SUB, Cardinal::North, SUB_LEN);
-	theShipArr[DESTR_INDEX] = Ship(DESTR, Cardinal::North, DESTR_LEN);
+	theShipArr[CARR_INDEX] = Carrier();
+	theShipArr[BATT_INDEX] = Battleship();
+	theShipArr[CRUS_INDEX] = Cruiser();
+	theShipArr[SUB_INDEX] = Submarine();
+	theShipArr[DESTR_INDEX] = Destroyer();
 }
 
 
 
 BattleShip::BattleShip()
 {
-	//Initializing Game Boards
-	this->initGameBoardArray(this->P1_Board);
-	this->initGameBoardArray(this->P2_Board);
 	//Initializing Ships
 	this->initShips(this->P1_Ships);
 	this->initShips(this->P2_Ships);
 
 	currShip = nullptr;
+	this->P1Board = new Board((int)GRID_SIZE);
+	this->P2Board = new Board((int)GRID_SIZE);
 
 }
 
 BattleShip::~BattleShip()
 {
+	delete this->P1Board;
+	delete this->P2Board;
 }
 
 
@@ -84,11 +74,5 @@ Ship* BattleShip::getShipAtIndex(const Player player, const int index)
 
 bool BattleShip::VerifyAndPlaceShipOnBoard(const Player player, Ship& shipToPlace)
 {
-	if (shipToPlace.getOrientation() == Cardinal::North || shipToPlace.getOrientation() == Cardinal::South) {
-		//shipToPlace.getPos().
-	}
-	else {
-
-	}
 	return false;
 }

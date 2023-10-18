@@ -41,30 +41,18 @@ void Wrapper::initTextures()
 
 	//Ships
 	//Textures
-	if (!this->shipTextures[CARR_INDEX].loadFromFile("resources/ShipCarrierHull.png")) {
-		std::cout << "Couldn't Load Carrier Texture" << std::endl;
-	}
-	if (!this->shipTextures[BATT_INDEX].loadFromFile("resources/ShipBattleshipHull.png")) {
-		std::cout << "Couldn't Load Battleship Texture" << std::endl;
-	}
-	if (!this->shipTextures[CRUS_INDEX].loadFromFile("resources/ShipCruiserHull.png")) {
-		std::cout << "Couldn't Load Cruiser Texture" << std::endl;
-	}
-	if (!this->shipTextures[DESTR_INDEX].loadFromFile("resources/ShipDestroyerHull.png")) {
-		std::cout << "Couldn't Load Destroyer Texture" << std::endl;
-	}
-	if (!this->shipTextures[SUB_INDEX].loadFromFile("resources/ShipSubMarineHull.png")) {
-		std::cout << "Couldn't Load Submarine Texture" << std::endl;
-	}
+
+
+
+
 
 
 	//Sprites
-	this->shipSprites[CARR_INDEX].setTexture(this->shipTextures[CARR_INDEX]);
-	this->shipSprites[CARR_INDEX].setScale(sf::Vector2f(1.4,2.2));
-	this->shipSprites[BATT_INDEX].setTexture(this->shipTextures[BATT_INDEX]);
-	this->shipSprites[CRUS_INDEX].setTexture(this->shipTextures[CRUS_INDEX]);
-	this->shipSprites[DESTR_INDEX].setTexture(this->shipTextures[DESTR_INDEX]);
-	this->shipSprites[SUB_INDEX].setTexture(this->shipTextures[SUB_INDEX]);
+
+	
+
+
+
 	
 }
 
@@ -163,70 +151,70 @@ void Wrapper::DrawGame()
 	this->gameWindow->draw(this->P2ScoreText);
 	if (this->currState == GameState::Setup) {
 		for (int i = 0; i <= this->maxShipToRender; i++) {
-			this->gameWindow->draw(this->shipSprites[i]);
+			this->gameWindow->draw(this->game.getShipAtIndex(Player::Player_1,i)->getSprite());
 		}
 	}
 	this->DrawGridLines();
 }
-
+/*
 void Wrapper::MoveUp()
 {
-	if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::North) {
+	if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Vertical) {
 		if ((this->selectedShip->getPos().y - 1) >= 0) {
 			//Set new position
 			this->selectedShip->setPos(sf::Vector2i(this->selectedShip->getPos().x,this->selectedShip->getPos().y - 1));
 			std::cout << "(" << this->selectedShip->getPos().x << ", " << this->selectedShip->getPos().y << ")" << std::endl;
 		}
 	}
-	//else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::South) {
+	//else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Vertical) {
 	//	if ((this->selectedShip->getPos().y - 1) >= 0) {
 	//		this->selectedShip->setPos(sf::Vector2i(this->selectedShip->getPos().x, this->selectedShip->getPos().y - 1));
 	//		std::cout << "(" << this->selectedShip->getPos().x << ", " << this->selectedShip->getPos().y << ")" << std::endl;
 	//	}
 	//}
-	/*
-	else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::East) {
+	
+	else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Horizontal) {
 		if ((this->selectedShip->getPos().y - 1) >= 0) {
 			currShipPos.y -= 1;
 			std::cout << "(" << currShipPos.x << ", " << currShipPos.y << ")" << std::endl;
 		}
 	}
-	else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::West) {
+	else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Horizontal) {
 		if ((this->selectedShip->getPos().y - 1) >= 0) {
 			currShipPos.y -= 1;
 			std::cout << "(" << currShipPos.x << ", " << currShipPos.y << ")" << std::endl;
 		}
 	}
-	*/
+	
 	this->shipSprites[maxShipToRender].setPosition((this->selectedShip->getPos().x * gridSize) + BOARD_OUTLINE_THICKNESS, (this->selectedShip->getPos().y * gridSize) + BOARD_OUTLINE_THICKNESS);
 }
 
 void Wrapper::MoveDown()
 {
-	if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::North) {
+	if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Vertical) {
 		if ((this->selectedShip->getPos().y + 1) <= (MAX_ROWS - this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getHealth())) {
 			this->selectedShip->setPos(sf::Vector2i(this->selectedShip->getPos().x, this->selectedShip->getPos().y + 1));
 			std::cout << "(" << this->selectedShip->getPos().x << ", " << this->selectedShip->getPos().y << ")" << std::endl;
 		}
 	}
-	/*else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::South) {
+	/*else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Vertical) {
 		if ((this->currShipPos.y + 1) <= (MAX_ROWS - this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getHealth())) {
 			currShipPos.y += 1;
 			std::cout << "(" << currShipPos.x << ", " << currShipPos.y << ")" << std::endl;
 		}
 	}*/
-	/*else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::East) {
+	/*else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Horizontal) {
 		if ((this->currShipPos.y + 1) < MAX_ROWS) {
 			currShipPos.y += 1;
 			std::cout << "(" << currShipPos.x << ", " << currShipPos.y << ")" << std::endl;
 		}
 	}
-	else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Cardinal::West) {
+	else if (this->game.getShipAtIndex(Player::Player_1, maxShipToRender)->getOrientation() == Orientation::Horizontal) {
 		if ((this->currShipPos.y + 1) < MAX_ROWS) {
 			currShipPos.y += 1;
 			std::cout << "(" << currShipPos.x << ", " << currShipPos.y << ")" << std::endl;
 		}
-	}*/
+	}
 	this->shipSprites[maxShipToRender].setPosition((this->selectedShip->getPos().x * gridSize) + BOARD_OUTLINE_THICKNESS, (this->selectedShip->getPos().y * gridSize) + BOARD_OUTLINE_THICKNESS);
 }
 
@@ -237,24 +225,25 @@ void Wrapper::MoveLeft()
 void Wrapper::MoveRight()
 {
 }
+*/
 
 void Wrapper::HandleSetupInput(sf::Event& keyEvent)
 {
 	if (keyEvent.key.code == sf::Keyboard::W) {
-		this->MoveUp();
+		//this->MoveUp();
 	}
 	else if (keyEvent.key.code == sf::Keyboard::A) {
 		this->selectedShip->setPos(sf::Vector2i(this->selectedShip->getPos().x - 1, this->selectedShip->getPos().y));
 		std::cout << "(" << this->selectedShip->getPos().x << ", " << this->selectedShip->getPos().y << ")" << std::endl;
-		this->shipSprites[maxShipToRender].setPosition((this->selectedShip->getPos().x * gridSize) + BOARD_OUTLINE_THICKNESS, (this->selectedShip->getPos().y * gridSize) + BOARD_OUTLINE_THICKNESS);
+		//this->shipSprites[maxShipToRender].setPosition((this->selectedShip->getPos().x * gridSize) + BOARD_OUTLINE_THICKNESS, (this->selectedShip->getPos().y * gridSize) + BOARD_OUTLINE_THICKNESS);
 	}
 	else if (keyEvent.key.code == sf::Keyboard::S) {
-		this->MoveDown();
+		//this->MoveDown();
 	}
 	else if (keyEvent.key.code == sf::Keyboard::D) {
 		this->selectedShip->setPos(sf::Vector2i(this->selectedShip->getPos().x + 1, this->selectedShip->getPos().y));
 		std::cout << "(" << this->selectedShip->getPos().x << ", " << this->selectedShip->getPos().y << ")" << std::endl;
-		this->shipSprites[maxShipToRender].setPosition((this->selectedShip->getPos().x * gridSize) + BOARD_OUTLINE_THICKNESS, (this->selectedShip->getPos().y * gridSize) + BOARD_OUTLINE_THICKNESS);
+		//this->shipSprites[maxShipToRender].setPosition((this->selectedShip->getPos().x * gridSize) + BOARD_OUTLINE_THICKNESS, (this->selectedShip->getPos().y * gridSize) + BOARD_OUTLINE_THICKNESS);
 	}
 	//else if (keyEvent.key.code == sf::Keyboard::E) {
 	//	//Set the origin of the sprite to its center

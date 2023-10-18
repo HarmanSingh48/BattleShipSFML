@@ -1,17 +1,23 @@
 #pragma once
 #include "Constants.h"
 
+using std::string;
+
 class Ship {
-	char type;
+protected:
+	string type;
 	sf::Vector2i bowPos;
 	Orientation orientation;
 	int health;
+	sf::Texture shipTexture;
+	sf::Sprite shipSprite;
+
 public:
-	Ship(char theType = '~', Orientation theOrientation = Orientation::Vertical, int theHealthPool = 0);
+	Ship();
 	~Ship();
 
 	//Getters/Setters
-	char getType();
+	string getType();
 
 	sf::Vector2i getPos();
 
@@ -23,5 +29,36 @@ public:
 
 	int getHealth();
 
+	sf::Sprite& getSprite();
+
 };
 
+class Carrier : public Ship {
+public:
+	Carrier();
+	~Carrier();
+};
+
+class Battleship : public Ship {
+public:
+	Battleship();
+	~Battleship();
+};
+
+class Submarine : public Ship {
+public:
+	Submarine();
+	~Submarine();
+};
+
+class Cruiser : public Ship {
+public:
+	Cruiser();
+	~Cruiser();
+};
+
+class Destroyer : public Ship {
+public:
+	Destroyer();
+	~Destroyer();
+};
