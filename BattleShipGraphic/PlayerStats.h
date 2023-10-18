@@ -1,5 +1,5 @@
 #pragma once
-#include "Ship.h"
+#include "Board.h"
 
 class PlayerStats {
 private:

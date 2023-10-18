@@ -4,6 +4,8 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/System/Vector2.hpp"
 
+using std::cout;
+
 #define MAX_ROWS 10
 #define MAX_COLS 10
 
