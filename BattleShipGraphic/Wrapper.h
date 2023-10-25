@@ -65,10 +65,10 @@ private:
 	void initGameBoardVisuals();
 	void DrawGame();
 		//Ship Movement
-	void MoveUp();
-	void MoveDown();
-	void MoveLeft();
-	void MoveRight();
+	//void MoveUp();
+	//void MoveDown();
+	//void MoveLeft();
+	//void MoveRight();
 
 	void HandleSetupInput(sf::Event& keyEvent);
 

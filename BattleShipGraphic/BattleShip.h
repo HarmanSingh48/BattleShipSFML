@@ -6,7 +6,7 @@ class BattleShip
 		//Player 1
 	Board* P1Board;
 	PlayerStats P1_Stats;
-	Ship P1_Ships[NUMBER_OF_SHIPS_PER_PLAYER];
+	Ship* P1_Ships;
 
 		//Player 2
 	Board* P2Board;
@@ -18,7 +18,7 @@ class BattleShip
 
 
 
-	void initShips(Ship theShipArr[]);
+	void initShips(Ship* theShipArr);
 
 
 

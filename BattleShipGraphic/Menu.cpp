@@ -50,7 +50,7 @@ void Menu::InitInstructions(float width, float height) {//Idea: Use a pre render
 		instructions[i].setFont(menuFont);
 		instructions[i].setPosition(sf::Vector2f(width / 32, height / (6 + 1) * (i + 1)));
 		instructions[i].setCharacterSize(30);
-		instructions[i].setLetterSpacing(0.85);
+		instructions[i].setLetterSpacing((float)0.85);
 	}
 	instructions[5].setFillColor(sf::Color::Blue);
 }

@@ -39,21 +39,7 @@ void Wrapper::initTextures()
 	}
 	this->gameBackgroundSprite.setTexture(this->gameBackgroundTex);
 
-	//Ships
-	//Textures
 
-
-
-
-
-
-	//Sprites
-
-	
-
-
-
-	
 }
 
 void Wrapper::initGridLines()
@@ -303,6 +289,7 @@ Wrapper::Wrapper()
 
 Wrapper::~Wrapper()
 {
+	cout << "~Wrapper" << std::endl;
 	delete this->gameWindow;
 }
 

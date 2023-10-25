@@ -9,7 +9,7 @@ protected:
 	sf::Vector2i bowPos;
 	Orientation orientation;
 	int health;
-	sf::Texture shipTexture;
+	sf::Texture *shipTexture;
 	sf::Sprite shipSprite;
 
 public:

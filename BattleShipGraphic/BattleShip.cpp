@@ -1,9 +1,11 @@
 #include "BattleShip.h"
 
 
-void BattleShip::initShips(Ship theShipArr[])
+void BattleShip::initShips(Ship* theShipArr)
 {
+	theShipArr = new Ship[5];
 	//Initialize each ship type for both players
+	cout << "Creating Carrier" << std::endl;
 	theShipArr[CARR_INDEX] = Carrier();
 	theShipArr[BATT_INDEX] = Battleship();
 	theShipArr[CRUS_INDEX] = Cruiser();
@@ -17,7 +19,7 @@ BattleShip::BattleShip()
 {
 	//Initializing Ships
 	this->initShips(this->P1_Ships);
-	this->initShips(this->P2_Ships);
+	//this->initShips(this->P2_Ships);
 
 	currShip = nullptr;
 	this->P1Board = new Board((int)GRID_SIZE);
@@ -63,7 +65,7 @@ void BattleShip::UpdateScoreBoard(sf::Text* P1ScoreBoard, sf::Text* P2ScoreBoard
 
 Ship* BattleShip::getShipAtIndex(const Player player, const int index)
 {
-	if (index >= 0 || index < NUMBER_OF_SHIPS_PER_PLAYER) {
+	if (index >= 0 && index < NUMBER_OF_SHIPS_PER_PLAYER) {
 		if (player == Player::Player_1) {
 			return &P1_Ships[index];
 		}
