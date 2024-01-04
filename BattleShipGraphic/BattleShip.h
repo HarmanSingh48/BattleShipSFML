@@ -6,19 +6,19 @@ class BattleShip
 		//Player 1
 	Board* P1Board;
 	PlayerStats P1_Stats;
-	Ship P1_Ships[NUMBER_OF_SHIPS_PER_PLAYER];
+	Ship** P1_Ships;
 
 		//Player 2
 	Board* P2Board;
 	PlayerStats P2_Stats;
-	Ship P2_Ships[NUMBER_OF_SHIPS_PER_PLAYER];
+	Ship** P2_Ships;
 
 	Ship* currShip;
 
 
 
 
-	void initShips(Ship theShipArr[]);
+	void initShips();
 
 
 
@@ -33,5 +33,9 @@ public:
 	void UpdateScoreBoard(sf::Text* P1ScoreBoard, sf::Text* P2ScoreBoard);
 	Ship* getShipAtIndex(const Player player, const int index);
 	bool VerifyAndPlaceShipOnBoard(const Player player, Ship& shipToPlay);
+	void MoveDown(Ship* shipToMove);
+	void MoveUp(Ship* shipToMove);
+	void MoveLeft(Ship* shipToMove);
+	void MoveRight(Ship* shipToMove);
 };
 
