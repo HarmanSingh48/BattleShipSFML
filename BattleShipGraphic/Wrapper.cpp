@@ -249,7 +249,7 @@ void Wrapper::HandleSetupInput(sf::Event& keyEvent)
 	//	
 	//}
 	else if (keyEvent.key.code == sf::Keyboard::Enter) {//Place ship on board
-		//place ship into battleship board[][]
+		//place ship into battleship board
 		
 		//increment max ships
 		
